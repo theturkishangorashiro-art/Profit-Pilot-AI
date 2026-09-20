@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profit Pilot AI 🚀 | Autonomous Financial Intelligence & Trading Autopilot</title>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Chart.js for Telemetry Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo-icon">🚀</div>
+        <div class="brand-text">
+          <h2>PROFIT PILOT</h2>
+          <span class="version-tag">AI v2.0 AUTOPILOT</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#overview" class="nav-item active" id="nav-overview">
+          <span class="icon">📊</span> Overview Telemetry
+        </a>
+        <a href="#agents" class="nav-item" id="nav-agents">
+          <span class="icon">🤖</span> AI Agents Stream
+        </a>
+        <a href="#arbitrage" class="nav-item" id="nav-arbitrage">
+          <span class="icon">🎯</span> Prediction Arb Radar
+        </a>
+        <a href="#risk" class="nav-item" id="nav-risk">
+          <span class="icon">🛡️</span> Risk & VaR Engine
+        </a>
+        <a href="#indian" class="nav-item" id="nav-indian">
+          <span class="icon">🇮🇳</span> Indian Stocks & F&O
+        </a>
+        <a href="#forum" class="nav-item" id="nav-forum">
+          <span class="icon">🌐</span> Agent Forum & Economy
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <span class="pulse-dot"></span>
+          <span id="system-status-text">Autonomous Engine Active</span>
+        </div>
+        <div class="provider-badge" id="active-provider-badge">Provider: CLAUDE 3.5</div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Navigation Header -->
+      <header class="top-header">
+        <div class="header-title">
+          <h1 id="page-title">Executive Control Telemetry</h1>
+          <p>Real-time autonomous market scanning across Polymarket, Kalshi, Solana & EVM DEXs</p>
+        </div>
+
+        <div class="header-actions">
+          <select id="llm-provider-selector" class="custom-select">
+            <option value="anthropic">Claude 3.5 Sonnet (Anthropic)</option>
+            <option value="openai">GPT-4o (OpenAI)</option>
+            <option value="gemini">Gemini 1.5 Pro (Google)</option>
+            <option value="deepseek">DeepSeek V3 / R1</option>
+            <option value="ollama">Ollama (Local Llama 3)</option>
+          </select>
+          <button class="btn btn-primary" id="btn-trigger-analysis">⚡ Trigger AI Scan</button>
+        </div>
+      </header>
+
+      <!-- Section 1: Overview Dashboard -->
+      <section id="section-overview" class="dashboard-section">
+        <!-- Stat Cards Row -->
+        <div class="stats-grid">
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Total Capital Portfolio</span>
+              <span class="stat-icon">💰</span>
+            </div>
+            <div class="stat-value" id="stat-portfolio">$12,450.75</div>
+            <div class="stat-trend positive">↑ +3.18% 24h</div>
+          </div>
+
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Daily Realized P&L</span>
+              <span class="stat-icon">📈</span>
+            </div>
+            <div class="stat-value" id="stat-pnl">+$384.20</div>
+            <div class="stat-sub">Win Rate: <strong id="stat-winrate">74.2%</strong></div>
+          </div>
+
+          <div class="glass-card stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Active Positions</span>
+              <span class="stat-icon">⚡</span>
+            </div>
+            <div class="stat-value" id="stat-positions">4 Active</div>
+            <div class="stat-sub">Leverage Max: <strong>10x</strong></div>
+          </div>
+
+          <div class="glass-card stat-card highlight-card">
+            <div class="stat-header">
+              <span class="stat-title">🎯 $2 Micro Prediction Challenge</span>
+              <span class="badge badge-success" id="challenge-level">🌱 Level 1: $2</span>
+            </div>
+            <div class="stat-value text-green" id="stat-challenge-bal">$2.00</div>
+            <div class="challenge-progress-bar">
+              <div class="progress-fill" id="challenge-progress-fill" style="width: 20%;"></div>
+            </div>
+            <div class="stat-sub" style="margin-top: 6px; display: flex; justify-content: space-between;">
+              <span>Target: <strong id="stat-challenge-target">$5.00</strong></span>
+              <button class="btn btn-sm btn-accent" id="btn-start-challenge">🚀 Reset $2 Challenge</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts and Feeds Row -->
+        <div class="grid-2-col">
+          <div class="glass-card">
+            <div class="card-header">
+              <h3>Portfolio Cumulative Returns</h3>
+              <span class="badge">Real-Time</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="portfolioChart"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <div class="card-header">
+              <h3>Active Multi-Agent Thought Stream</h3>
+              <span class="badge badge-accent">Live Telemetry</span>
+            </div>
+            <div class="terminal-logs" id="terminal-logs">
+              <!-- Logs populated via WebSocket -->
+              <div class="log-entry info"><span class="log-time">[18:24:00]</span> <span class="log-agent">[Main]</span> Initializing Profit Pilot AI execution pipeline.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Arbitrage Radar -->
+      <section id="section-arbitrage" class="dashboard-section hidden">
+        <div class="glass-card">
+          <div class="card-header">
+            <h3>Prediction Market & DEX Arbitrage Scanner</h3>
+            <span class="badge badge-success">Auto-Execution Active</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Opportunity ID</th>
+                  <th>Market A</th>
+                  <th>Market B</th>
+                  <th>Implied Spread</th>
+                  <th>Expected Return</th>
+                  <th>Safe Kelly Size</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="arbitrage-table-body">
+                <tr>
+                  <td><code class="code-tag">arb_95k_btc</code></td>
+                  <td>Polymarket BTC 95k (62.0%)</td>
+                  <td>Kalshi BTC 95k (54.0%)</td>
+                  <td><span class="text-green font-bold">+8.0%</span></td>
+                  <td><span class="text-green">+7.5% net</span></td>
+                  <td>$150.00</td>
+                  <td><button class="btn btn-sm btn-accent">Execute Instant Arb</button></td>
+                </tr>
+                <tr>
+                  <td><code class="code-tag">arb_fed_cut</code></td>
+                  <td>Polymarket Fed Cut (88.0%)</td>
+                  <td>Kalshi Fed Cut (86.0%)</td>
+                  <td><span class="text-yellow">+2.0%</span></td>
+                  <td><span class="text-yellow">+1.5% net</span></td>
+                  <td>$75.00</td>
+                  <td><button class="btn btn-sm btn-outline">Monitor</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Risk Engine Control -->
+      <section id="section-risk" class="dashboard-section hidden">
+        <div class="grid-2-col">
+          <div class="glass-card">
+            <div class="card-header">
+              <h3>Risk Engine & Circuit Breaker Status</h3>
+            </div>
+            <div class="risk-status-panel">
+              <div class="risk-item">
+                <span>Circuit Breaker State</span>
+                <span class="status-pill status-normal" id="circuit-breaker-pill">NORMAL (OFF)</span>
+              </div>
+              <div class="risk-item">
+                <span>Max Allowed Single Trade</span>
+                <strong>5.0% ($622.50)</strong>
+              </div>
+              <div class="risk-item">
+                <span>Kelly Safety Multiplier</span>
+                <strong>0.25 (Quarter-Kelly)</strong>
+              </div>
+              <div class="risk-item">
+                <span>Daily Hard Loss Stop</span>
+                <strong>$500.00</strong>
+              </div>
+
+              <div class="action-row">
+                <button class="btn btn-danger" id="btn-reset-circuit">Emergency Reset Circuit Breaker</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <div class="card-header">
+              <h3>Interactive Agent Prompt & Execution</h3>
+            </div>
+            <div class="prompt-box">
+              <textarea id="prompt-input" rows="4" class="custom-textarea" placeholder="Enter market command or query for Profit Pilot AI Agents (e.g. Scan Polymarket orderbooks for divergence)..."></textarea>
+              <button class="btn btn-primary" id="btn-submit-prompt">Send Command to Orchestrator</button>
+            </div>
+            <div class="response-box hidden" id="prompt-response-box">
+              <h4>Orchestrator Response:</h4>
+              <pre id="prompt-response-text" class="code-block"></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Indian Markets & F&O -->
+      <section id="section-indian" class="dashboard-section hidden">
+        <div class="glass-card">
+          <div class="card-header">
+            <h3>Indian Stock Exchange (NSE & BSE) & Option Chain Telemetry</h3>
+            <span class="badge badge-accent">Zerodha / Upstox / AngelOne Connector</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Company / Instrument</th>
+                  <th>LTP (₹)</th>
+                  <th>24h Change</th>
+                  <th>Volume</th>
+                  <th>VWAP (₹)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code class="code-tag">NSE:NIFTY50</code></td>
+                  <td>NIFTY 50 Index</td>
+                  <td><strong>₹24,850.40</strong></td>
+                  <td><span class="text-green">+0.75%</span></td>
+                  <td>245,000,000</td>
+                  <td>₹24,840.10</td>
+                </tr>
+                <tr>
+                  <td><code class="code-tag">NSE:BANKNIFTY</code></td>
+                  <td>NIFTY Bank Index</td>
+                  <td><strong>₹51,720.80</strong></td>
+                  <td><span class="text-green">+1.12%</span></td>
+                  <td>180,000,000</td>
+                  <td>₹51,690.50</td>
+                </tr>
+                <tr>
+                  <td><code class="code-tag">NSE:RELIANCE</code></td>
+                  <td>Reliance Industries Ltd.</td>
+                  <td><strong>₹2,985.50</strong></td>
+                  <td><span class="text-green">+0.62%</span></td>
+                  <td>8,500,000</td>
+                  <td>₹2,980.20</td>
+                </tr>
+                <tr>
+                  <td><code class="code-tag">NSE:TCS</code></td>
+                  <td>Tata Consultancy Services Ltd.</td>
+                  <td><strong>₹4,250.00</strong></td>
+                  <td><span class="text-yellow">-0.35%</span></td>
+                  <td>3,200,000</td>
+                  <td>₹4,255.10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Forum & Economy -->
+      <section id="section-forum" class="dashboard-section hidden">
+        <div class="glass-card">
+          <div class="card-header">
+            <h3>Machine-to-Machine Agent Forum & Marketplace</h3>
+            <span class="badge">x402 Protocol Enabled</span>
+          </div>
+          <div id="forum-threads-container" class="forum-grid">
+            <!-- Threads inserted dynamically -->
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "name": "profit-pilot-ai",
+  "version": "2.0.0",
+  "description": "Profit Pilot AI 🚀 - Next-Generation Autonomous AI Trading Agent for Prediction Markets, Indian Stocks/F&O, DEXs, and Crypto Perpetuals",
+  "main": "dist/server/app.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/server/app.js",
+    "dev": "ts-node src/server/app.ts",
+    "test": "jest"
+  },
+  "keywords": [
+    "trading-bot",
+    "ai-agent",
+    "polymarket",
+    "kalshi",
+    "solana",
+    "evm",
+    "hyperliquid",
+    "claude",
+    "deepseek",
+    "x402"
+  ],
+  "author": "Profit Pilot AI Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "@solana/web3.js": "^1.95.3",
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.2",
+    "express": "^4.21.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.13",
+    "@types/node": "^22.5.5",
+    "@types/ws": "^8.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  }
+}
