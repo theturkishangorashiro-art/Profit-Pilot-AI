@@ -84,7 +84,7 @@
 
 ### 1. Clone & Install Dependencies
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git
+git clone https://github.com/theturkishangorashiro-art/Profit-Pilot-AI.git
 cd YOUR_REPO_NAME
 npm install
 ```
